@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voltum – Retraktabel laddare utan trassel</title>
+  <meta name="description" content="Slipp trassel med Voltums retraktabla laddare. Smidig, hållbar och perfekt för skolan, resor och vardag. Beställ idag!">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="brand" aria-label="Voltum startsida">
+        <!-- Enkel SVG-logotyp -->
+        <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0%" stop-color="var(--accent)" />
+              <stop offset="100%" stop-color="var(--accent-2)" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#g)" d="M12 2l3.5 7H13l2 5-6-7h3L8.5 2H12z"/>
+        </svg>
+        <span>Voltum</span>
+      </a>
+
+      <nav class="nav" aria-label="Primär">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav__bar"></span><span class="nav__bar"></span><span class="nav__bar"></span>
+          <span class="sr-only">Meny</span>
+        </button>
+        <ul id="navMenu" class="nav__menu">
+          <li><a href="#produkt">Produkten</a></li>
+          <li><a href="#fordelar">Fördelar</a></li>
+          <li><a href="#bestall">Beställ</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="#bestall" class="btn btn--primary btn--sm hide-on-mobile">Beställ nu</a>
+    </div>
+  </header>
+
+  <!-- Teaser/Kampanjbanderoll -->
+  <aside class="banner" role="note">
+    <div class="container banner__inner">
+      <p><strong>Lanseringserbjudande:</strong> De första 50 beställningarna får <strong>10% rabatt</strong> – använd koden <code>VOL10</code> i kassan.</p>
+      <a class="btn btn--ghost" href="#bestall">Hämta rabatten</a>
+    </div>
+  </aside>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <h1>Slipp trassel. <span class="grad">Ladda smart</span> med Voltum.</h1>
+        <p class="lead">Vår retraktabla laddare dras ut när du behöver den – och snurrar in sig själv när du är klar. Smidig, hållbar och gjord för vardagen.</p>
+        <div class="hero__cta">
+          <a href="#bestall" class="btn btn--primary btn--lg">Beställ nu</a>
+          <a href="#produkt" class="btn btn--link">Se hur den funkar</a>
+        </div>
+        <ul class="trust">
+          <li>✔ Perfekt för skola & resor</li>
+          <li>✔ Mindre trassel, mer fokus</li>
+          <li>✔ 1 års funktionsgaranti</li>
+        </ul>
+      </div>
+
+      <figure class="hero__media">
+        <!-- Placeholder-bild / byt till egen -->
+        <img src="https://placehold.co/640x480/png?text=Voltum+Retraktabel+Laddare" alt="Voltums retraktabla laddare" />
+        <figcaption>
+          <button class="video-thumb" data-video="#demoVideo">▶ Spela upp produktdemo</button>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Produktpresentation -->
+  <section id="produkt" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>Voltum – Retraktabel laddare</h2>
+        <p>Ordning i väskan och på skrivbordet. Dra ut den längd du behöver – klick, så åker den in igen.</p>
+      </header>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Smidig mekanik</h3>
+          <p>Retraktabel spole som låser i flera steg och frigörs med ett lätt drag. Anpassad för vardagsanvändning.</p>
+        </article>
+        <article class="card">
+          <h3>Hållbar design</h3>
+          <p>Förstärkt kabelhölje och böjskydd vid kontakt. Testad för tusentals in- och utdrag.</p>
+        </article>
+        <article class="card">
+          <h3>Universella kontakter</h3>
+          <p>Välj USB-C till USB-C, eller 3-i-1 (USB-C/Lightning/Micro-USB) för maximal kompatibilitet.</p>
+        </article>
+      </div>
+
+      <div class="split">
+        <figure class="before-after">
+          <img src="https://placehold.co/560x360?text=Vanlig+kabel+%28trassel%29" alt="Trassliga kablar" />
+          <figcaption>Före: trassel och slitage</figcaption>
+        </figure>
+        <figure class="before-after">
+          <img src="https://placehold.co/560x360?text=Voltum+%E2%80%93+ordning" alt="Voltum ordning och reda" />
+          <figcaption>Efter: Voltum – ordning och flyt</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fördelar -->
+  <section id="fordelar" class="section section--tint">
+    <div class="container">
+      <header class="section__head">
+        <h2>Varför välja Voltum?</h2>
+      </header>
+
+      <ul class="benefits">
+        <li>
+          <span class="benefits__icon" aria-hidden="true">⚡</span>
+          <h3>Trasselfritt</h3>
+          <p>Alltid rätt längd – resten rullar in sig själv.</p>
+        </li>
+        <li>
+          <span class="benefits__icon" aria-hidden="true">🎒</span>
+          <h3>Väskvänlig</h3>
+          <p>Kompakt format som inte tar plats i skolan eller på resan.</p>
+        </li>
+        <li>
+          <span class="benefits__icon" aria-hidden="true">🛡️</span>
+          <h3>Tryggt köp</h3>
+          <p>1 års funktionsgaranti och 30 dagars öppet köp.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Beställning -->
+  <section id="bestall" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>Beställ din Voltum</h2>
+        <p>Lanseringspris från 179 kr. Använd koden <strong>VOL10</strong> för 10% rabatt (gäller de första 50).</p>
+      </header>
+
+      <form id="orderForm" class="form card form--grid" novalidate>
+        <div class="form__field">
+          <label for="name">Namn</label>
+          <input id="name" name="name" type="text" placeholder="För- och efternamn" required />
+          <small class="error"></small>
+        </div>
+
+        <div class="form__field">
+          <label for="email">E-post</label>
+          <input id="email" name="email" type="email" placeholder="namn@exempel.se" required />
+          <small class="error"></small>
+        </div>
+
+        <div class="form__field">
+          <label for="variant">Variant</label>
+          <select id="variant" name="variant">
+            <option value="usb-c">USB-C till USB-C</option>
+            <option value="3in1">3-i-1 (USB-C / Lightning / Micro-USB)</option>
+          </select>
+        </div>
+
+        <div class="form__field">
+          <label for="color">Färg</label>
+          <select id="color" name="color">
+            <option value="midnight">Midnight Blue</option>
+            <option value="violet">Violet Pulse</option>
+            <option value="graphite">Graphite</option>
+          </select>
+        </div>
+
+        <div class="form__field">
+          <label for="qty">Antal</label>
+          <input id="qty" name="qty" type="number" min="1" value="1" />
+        </div>
+
+        <div class="form__field">
+          <label for="coupon">Rabattkod</label>
+          <input id="coupon" name="coupon" type="text" inputmode="latin" placeholder="VOL10" />
+        </div>
+
+        <div class="form__summary">
+          <div class="price">
+            <span>Ditt pris:</span>
+            <strong id="price">179 kr</strong>
+          </div>
+          <button class="btn btn--primary" type="submit">Lägg beställning</button>
+        </div>
+
+        <p class="fineprint">Genom att beställa godkänner du våra villkor. Vi återkommer via e-post med betalningslänk / instruktioner.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Om oss / Social proof -->
+  <section id="om-oss" class="section section--tint">
+    <div class="container split">
+      <div>
+        <h2>Om Voltum (UF)</h2>
+        <p>Vi är ett UF-företag som ville lösa ett vardagsproblem vi själva störde oss på: trassliga kablar. Voltum gör det lätt att hålla ordning – i skolan, på resor och i vardagen.</p>
+        <ul class="bullets">
+          <li>Grundat 2025 • UF</li>
+          <li>Designat och testat i Sverige</li>
+          <li>Fokus på funktion och hållbarhet</li>
+        </ul>
+      </div>
+      <div>
+        <div class="social">
+          <h3>Följ oss</h3>
+          <p>Delta i tävlingar, se produktklipp och kampanjer.</p>
+          <div class="social__links">
+            <a class="btn btn--ghost" href="#" aria-label="Voltum på Instagram">Instagram</a>
+            <a class="btn btn--ghost" href="#" aria-label="Voltum på TikTok">TikTok</a>
+          </div>
+
+          <div class="ig-grid">
+            <!-- Byt till riktiga inbäddningar eller bilder senare -->
+            <img src="https://placehold.co/180x180" alt="Produktbild 1" />
+            <img src="https://placehold.co/180x180" alt="Produktbild 2" />
+            <img src="https://placehold.co/180x180" alt="Produktbild 3" />
+            <img src="https://placehold.co/180x180" alt="Produktbild 4" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <header class="section__head">
+        <h2>Vanliga frågor</h2>
+      </header>
+
+      <details class="faq">
+        <summary>Passar laddaren min mobil/dator?</summary>
+        <p>Välj USB-C till USB-C för moderna Android/PC/Mac-enheter eller 3-i-1 för maximal kompatibilitet inklusive iPhone (Lightning), Micro-USB och USB-C.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Hur lång är kabeln?</summary>
+        <p>Utdragbar upp till 1,0–1,2 m (beroende på variant). Låsning i flera steg, och snabb retraktion.</p>
+      </details>
+
+      <details class="faq">
+        <summary>Vad händer om mekanismen går sönder?</summary>
+        <p>Vi erbjuder 1 års funktionsgaranti. Kontakta oss så hjälper vi dig med reparation eller utbyte.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="section section--tint">
+    <div class="container">
+      <header class="section__head">
+        <h2>Kontakta oss</h2>
+        <p>Har du frågor, vill bli ambassadör eller samarbeta? Hör av dig!</p>
+      </header>
+
+      <form id="contactForm" class="form card form--stack" novalidate>
+        <div class="form__field">
+          <label for="cname">Namn</label>
+          <input id="cname" name="cname" type="text" placeholder="Ditt namn" required />
+          <small class="error"></small>
+        </div>
+        <div class="form__field">
+          <label for="cemail">E-post</label>
+          <input id="cemail" name="cemail" type="email" placeholder="namn@exempel.se" required />
+          <small class="error"></small>
+        </div>
+        <div class="form__field">
+          <label for="cmsg">Meddelande</label>
+          <textarea id="cmsg" name="cmsg" rows="5" placeholder="Skriv ditt meddelande..." required></textarea>
+          <small class="error"></small>
+        </div>
+        <button class="btn btn--primary" type="submit">Skicka</button>
+        <p class="fineprint">Vi svarar normalt inom 1–2 arbetsdagar.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="brand brand--footer">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <use href="#"></use>
+          </svg>
+          <span>Voltum</span>
+        </div>
+        <p>© 2025 Voltum UF. Alla rättigheter förbehålls.</p>
+      </div>
+      <nav aria-label="Snabblänkar">
+        <ul class="footer__links">
+          <li><a href="#bestall">Beställ</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Lightbox / Video Modal -->
+  <dialog id="demoVideo" class="modal">
+    <div class="modal__content">
+      <button class="modal__close" data-close>×</button>
+      <!-- Byt ut src till er riktiga video eller inbäddad <video> -->
+      <div class="responsive-embed">
+        <iframe title="Voltum produktdemo" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
