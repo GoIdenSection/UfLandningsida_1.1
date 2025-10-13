@@ -14,7 +14,6 @@
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="brand" aria-label="Voltum startsida">
-        <!-- Enkel SVG-logotyp -->
         <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
           <defs>
             <linearGradient id="g" x1="0" x2="1">
@@ -46,7 +45,7 @@
     </div>
   </header>
 
-  <!-- Teaser/Kampanjbanderoll -->
+  <!-- Teaser/Kampanjbanderoll (du sa: Bra) -->
   <aside class="banner" role="note">
     <div class="container banner__inner">
       <p><strong>Lanseringserbjudande:</strong> De första 50 beställningarna får <strong>10% rabatt</strong> – använd koden <code>VOL10</code> i kassan.</p>
@@ -54,7 +53,7 @@
     </div>
   </aside>
 
-  <!-- Hero -->
+  <!-- Hero (Bra) -->
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
@@ -72,7 +71,6 @@
       </div>
 
       <figure class="hero__media">
-        <!-- Placeholder-bild / byt till egen -->
         <img src="https://placehold.co/640x480/png?text=Voltum+Retraktabel+Laddare" alt="Voltums retraktabla laddare" />
         <figcaption>
           <button class="video-thumb" data-video="#demoVideo">▶ Spela upp produktdemo</button>
@@ -81,8 +79,8 @@
     </div>
   </section>
 
-  <!-- Produktpresentation -->
-  <section id="produkt" class="section">
+  <!-- Produktpresentation (INTE bra -> får ett jämnt band) -->
+  <section id="produkt" class="section section--band">
     <div class="container">
       <header class="section__head">
         <h2>Voltum – Retraktabel laddare</h2>
@@ -117,8 +115,8 @@
     </div>
   </section>
 
-  <!-- Fördelar -->
-  <section id="fordelar" class="section section--tint">
+  <!-- Fördelar (Bra) -->
+  <section id="fordelar" class="section">
     <div class="container">
       <header class="section__head">
         <h2>Varför välja Voltum?</h2>
@@ -144,7 +142,7 @@
     </div>
   </section>
 
-  <!-- Beställning -->
+  <!-- Beställning (Bra) -->
   <section id="bestall" class="section">
     <div class="container">
       <header class="section__head">
@@ -158,13 +156,11 @@
           <input id="name" name="name" type="text" placeholder="För- och efternamn" required />
           <small class="error"></small>
         </div>
-
         <div class="form__field">
           <label for="email">E-post</label>
           <input id="email" name="email" type="email" placeholder="namn@exempel.se" required />
           <small class="error"></small>
         </div>
-
         <div class="form__field">
           <label for="variant">Variant</label>
           <select id="variant" name="variant">
@@ -172,7 +168,6 @@
             <option value="3in1">3-i-1 (USB-C / Lightning / Micro-USB)</option>
           </select>
         </div>
-
         <div class="form__field">
           <label for="color">Färg</label>
           <select id="color" name="color">
@@ -181,12 +176,10 @@
             <option value="graphite">Graphite</option>
           </select>
         </div>
-
         <div class="form__field">
           <label for="qty">Antal</label>
           <input id="qty" name="qty" type="number" min="1" value="1" />
         </div>
-
         <div class="form__field">
           <label for="coupon">Rabattkod</label>
           <input id="coupon" name="coupon" type="text" inputmode="latin" placeholder="VOL10" />
@@ -205,8 +198,8 @@
     </div>
   </section>
 
-  <!-- Om oss / Social proof -->
-  <section id="om-oss" class="section section--tint">
+  <!-- Om oss (Bra) -->
+  <section id="om-oss" class="section">
     <div class="container split">
       <div>
         <h2>Om Voltum (UF)</h2>
@@ -225,9 +218,7 @@
             <a class="btn btn--ghost" href="#" aria-label="Voltum på Instagram">Instagram</a>
             <a class="btn btn--ghost" href="#" aria-label="Voltum på TikTok">TikTok</a>
           </div>
-
           <div class="ig-grid">
-            <!-- Byt till riktiga inbäddningar eller bilder senare -->
             <img src="https://placehold.co/180x180" alt="Produktbild 1" />
             <img src="https://placehold.co/180x180" alt="Produktbild 2" />
             <img src="https://placehold.co/180x180" alt="Produktbild 3" />
@@ -238,32 +229,34 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="section">
+  <!-- FAQ (INTE bra -> får jämnt band över hela sektionen) -->
+  <section id="faq" class="section section--band">
     <div class="container">
       <header class="section__head">
         <h2>Vanliga frågor</h2>
       </header>
 
-      <details class="faq">
-        <summary>Passar laddaren min mobil/dator?</summary>
-        <p>Välj USB-C till USB-C för moderna Android/PC/Mac-enheter eller 3-i-1 för maximal kompatibilitet inklusive iPhone (Lightning), Micro-USB och USB-C.</p>
-      </details>
+      <div class="faq-list">
+        <details class="faq">
+          <summary>Passar laddaren min mobil/dator?</summary>
+          <p>Välj USB-C till USB-C för moderna Android/PC/Mac-enheter eller 3-i-1 för maximal kompatibilitet inklusive iPhone (Lightning), Micro-USB och USB-C.</p>
+        </details>
 
-      <details class="faq">
-        <summary>Hur lång är kabeln?</summary>
-        <p>Utdragbar upp till 1,0–1,2 m (beroende på variant). Låsning i flera steg, och snabb retraktion.</p>
-      </details>
+        <details class="faq">
+          <summary>Hur lång är kabeln?</summary>
+          <p>Utdragbar upp till 1,0–1,2 m (beroende på variant). Låsning i flera steg, och snabb retraktion.</p>
+        </details>
 
-      <details class="faq">
-        <summary>Vad händer om mekanismen går sönder?</summary>
-        <p>Vi erbjuder 1 års funktionsgaranti. Kontakta oss så hjälper vi dig med reparation eller utbyte.</p>
-      </details>
+        <details class="faq">
+          <summary>Vad händer om mekanismen går sönder?</summary>
+          <p>Vi erbjuder 1 års funktionsgaranti. Kontakta oss så hjälper vi dig med reparation eller utbyte.</p>
+        </details>
+      </div>
     </div>
   </section>
 
-  <!-- Kontakt -->
-  <section id="kontakt" class="section section--tint">
+  <!-- Kontakt (INTE bra -> får jämnt band så bakgrunden inte bryts i formuläret) -->
+  <section id="kontakt" class="section section--band">
     <div class="container">
       <header class="section__head">
         <h2>Kontakta oss</h2>
@@ -292,7 +285,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (Bra) -->
   <footer class="footer">
     <div class="container footer__grid">
       <div>
@@ -319,7 +312,6 @@
   <dialog id="demoVideo" class="modal">
     <div class="modal__content">
       <button class="modal__close" data-close>×</button>
-      <!-- Byt ut src till er riktiga video eller inbäddad <video> -->
       <div class="responsive-embed">
         <iframe title="Voltum produktdemo" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen loading="lazy"></iframe>
       </div>
