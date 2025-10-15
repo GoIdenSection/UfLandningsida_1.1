@@ -150,7 +150,9 @@
         <p>Lanseringspris från 179 kr. Använd koden <strong>VOL10</strong> för 10% rabatt (gäller de första 50).</p>
       </header>
 
-      <form id="orderForm" class="form card form--grid" novalidate>
+      <form id="orderForm" class="form card form--grid" novalidate action="order.php" method="POST">
+        <input type="text" name="_hp" id="_hp" style="display:none" tabindex="-1" autocomplete="off" />
+
         <div class="form__field">
           <label for="name">Namn</label>
           <input id="name" name="name" type="text" placeholder="För- och efternamn" required />
@@ -265,7 +267,9 @@
         <p>Har du frågor, vill bli ambassadör eller samarbeta? Hör av dig!</p>
       </header>
 
-      <form id="contactForm" class="form card form--stack" novalidate>
+      <form id="contactForm" class="form card form--stack" novalidate action="contact.php" method="POST">
+        <input type="text" name="_hp" id="_hp" style="display:none" tabindex="-1" autocomplete="off" />
+
         <div class="form__field">
           <label for="cname">Namn</label>
           <input id="cname" name="cname" type="text" placeholder="Ditt namn" required />

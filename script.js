@@ -160,60 +160,82 @@ function showToast(message) {
 
 // === Orderformulär (demo) ===
 if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    clearErrors(form);
-
-    const name = form.name;
-    const email = form.email;
-
-    let valid = true;
-    if (!name.value.trim()) { showError(name, 'Ange namn.'); valid = false; }
-    if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { showError(email, 'Ogiltig e-post.'); valid = false; }
-
-    if (!valid) return;
-
-    const orderData = {
-      name: name.value.trim(),
-      email: email.value.trim(),
-      variant: form.variant.value,
-      color: form.color.value,
-      qty: Math.max(1, parseInt(form.qty.value || '1', 10)),
-      coupon: (form.coupon.value || '').trim().toUpperCase()
-    };
-
-    console.log('Order skickad (demo):', orderData);
-    form.reset();
-    calcPrice();
-    showToast('Tack! Din beställning är mottagen – vi hör av oss via e-post.');
-  });
-}
+  }
 
 // === Kontaktformulär (demo) ===
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  }
+
+// === Skicka formulär till PHP-backend ===
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors(form);
+    let ok = validateRequired(name, 'Ange ditt namn');
+    ok = validateEmail(email) && ok;
+    ok = validateRequired(address, 'Ange leveransadress') && ok;
+    ok = validateRequired(zip, 'Ange postnummer') && ok;
+    ok = validateRequired(city, 'Ange ort') && ok;
+    if (!ok) return;
+
+    const payload = {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      variant: variantEl.value,
+      qty: Math.max(1, parseInt(qtyEl.value || '1', 10)),
+      coupon: (couponEl?.value || '').trim(),
+      address: address.value.trim(),
+      zip: zip.value.trim(),
+      city: city.value.trim(),
+      _hp: document.getElementById('_hp')?.value || ''
+    };
+
+    try {
+      const res = await fetch(form.getAttribute('action') || 'order.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Nätverksfel');
+      showToast('Tack för din beställning! Vi hör av oss via e-post.');
+      form.reset();
+      calcPrice();
+    } catch (err) {
+      console.error(err);
+      // fallback – försök vanlig submit om fetch misslyckas
+      form.submit();
+    }
+  });
+
+
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     clearErrors(contactForm);
-
-    const cname = contactForm.cname;
-    const cemail = contactForm.cemail;
-    const cmsg = contactForm.cmsg;
-    let valid = true;
-
-    if (!cname.value.trim()) { showError(cname, 'Ange namn.'); valid = false; }
-    if (!cemail.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { showError(cemail, 'Ogiltig e-post.'); valid = false; }
-    if (cmsg.value.trim().length < 10) { showError(cmsg, 'Skriv minst 10 tecken.'); valid = false; }
-
-    if (!valid) return;
+    let ok = validateRequired(cname, 'Ange ditt namn');
+    ok = validateEmail(cemail) && ok;
+    ok = validateRequired(cmsg, 'Skriv ett meddelande') && ok;
+    if (!ok) return;
 
     const payload = {
       name: cname.value.trim(),
       email: cemail.value.trim(),
-      message: cmsg.value.trim()
+      message: cmsg.value.trim(),
+      _hp: document.getElementById('_hp')?.value || ''
     };
-    console.log('Kontakt skickad (demo):', payload);
-    contactForm.reset();
-    showToast('Tack! Ditt meddelande har skickats.');
+
+    try {
+      const res = await fetch(contactForm.getAttribute('action') || 'contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Nätverksfel');
+      showToast('Tack! Ditt meddelande har skickats.');
+      contactForm.reset();
+    } catch (err) {
+      console.error(err);
+      contactForm.submit();
+    }
   });
-}
+
