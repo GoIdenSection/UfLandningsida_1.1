@@ -1,11 +1,25 @@
-// === Mobilmeny ===
+// === Elementreferenser ===
+const header = document.querySelector('.header');
 const toggleBtn = document.querySelector('.nav__toggle');
 const navMenu = document.getElementById('navMenu');
+const toast = document.getElementById('toast');
 
+function setHeaderHeightVar(){
+  if (!header) return;
+  const h = header.offsetHeight;
+  document.documentElement.style.setProperty('--header-h', h + 'px');
+}
+setHeaderHeightVar();
+window.addEventListener('resize', setHeaderHeightVar);
+
+
+// === Mobilmeny ===
 if (toggleBtn && navMenu) {
   toggleBtn.addEventListener('click', () => {
     const open = navMenu.classList.toggle('is-open');
     toggleBtn.setAttribute('aria-expanded', String(open));
+    // Om menyn öppnas: se till att headern visas (så den inte är dold när menyn är framme)
+    if (open) header && header.classList.remove('header--hidden');
   });
 
   // Stäng meny vid klick på länk (mobil)
@@ -17,7 +31,7 @@ if (toggleBtn && navMenu) {
   });
 }
 
-// === Smooth scroll för interna länkar (fallback för äldre browsers) ===
+// === Smooth scroll för interna länkar ===
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const id = a.getAttribute('href').slice(1);
@@ -48,30 +62,75 @@ document.querySelectorAll('[data-close]').forEach(btn => {
   });
 });
 
+// === Header: hide on scroll down, show on scroll up (var som helst på sidan) ===
+(function initSmartHeader(){
+  if (!header) return;
+  const navMenu = document.getElementById('navMenu');
+  const toggleBtn = document.querySelector('.nav__toggle');
+
+  let lastY = window.scrollY || 0;
+  const DELTA = 6;     // ignorera mikroskak
+  let ticking = false;
+
+  function update(){
+    const y = window.scrollY || 0;
+    const dy = y - lastY;
+    const goingDown = dy > DELTA;
+    const goingUp   = dy < -DELTA;
+
+    // Lyft skugga när man inte är allra högst upp
+    if (y > 8) header.classList.add('header--elevated');
+    else header.classList.remove('header--elevated');
+
+    // Dölj inte när mobilmeny är öppen
+    const menuOpen = navMenu && navMenu.classList.contains('is-open');
+
+    if (!menuOpen && goingDown) {
+      header.classList.add('header--hidden');    // försvinn på nedåt-scroll
+    } else if (goingUp) {
+      header.classList.remove('header--hidden'); // dyker upp direkt på uppåt-scroll
+    }
+
+    lastY = y;
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (!ticking){
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  // Init + listeners
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Om användaren öppnar mobilmenyn -> visa headern
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => header.classList.remove('header--hidden'));
+    toggleBtn.addEventListener('focus', () => header.classList.remove('header--hidden'));
+  }
+})();
+
+
 // === Prisberäkning för beställning ===
 const form = document.getElementById('orderForm');
 const priceEl = document.getElementById('price');
 const qtyEl = document.getElementById('qty');
 const variantEl = document.getElementById('variant');
 const couponEl = document.getElementById('coupon');
-const toast = document.getElementById('toast');
 
-// Grundpriser
-const basePrices = {
-  'usb-c': 179,
-  '3in1': 219
-};
+const basePrices = { 'usb-c': 179, '3in1': 219 };
 
 function calcPrice() {
+  if (!priceEl || !variantEl || !qtyEl) return;
   const variant = variantEl.value;
   const qty = Math.max(1, parseInt(qtyEl.value || '1', 10));
   let price = (basePrices[variant] || 179) * qty;
 
-  // Rabattkod
-  const code = (couponEl.value || '').trim().toUpperCase();
-  if (code === 'VOL10') {
-    price *= 0.9;
-  }
+  const code = (couponEl?.value || '').trim().toUpperCase();
+  if (code === 'VOL10') price *= 0.9;
 
   priceEl.textContent = `${Math.round(price)} kr`;
 }
@@ -80,7 +139,7 @@ function calcPrice() {
 });
 calcPrice();
 
-// === Enkel validering + submit (demo-läge) ===
+// === Helpers för formulär ===
 function showError(input, msg) {
   const field = input.closest('.form__field');
   if (!field) return;
@@ -92,7 +151,6 @@ function clearErrors(formEl) {
   formEl.querySelectorAll('.error').forEach(e => e.textContent = '');
   formEl.querySelectorAll('[aria-invalid="true"]').forEach(el => el.setAttribute('aria-invalid','false'));
 }
-
 function showToast(message) {
   if (!toast) return;
   toast.textContent = message;
@@ -100,6 +158,7 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove('is-show'), 2300);
 }
 
+// === Orderformulär (demo) ===
 if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -114,7 +173,6 @@ if (form) {
 
     if (!valid) return;
 
-    // Här kan ni koppla till er betalning/Google Form/API
     const orderData = {
       name: name.value.trim(),
       email: email.value.trim(),
@@ -131,7 +189,7 @@ if (form) {
   });
 }
 
-// Kontaktformulär (demo)
+// === Kontaktformulär (demo) ===
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
